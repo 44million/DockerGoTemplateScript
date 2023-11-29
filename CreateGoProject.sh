@@ -38,6 +38,34 @@ RUN go build -o app ./src
 
 CMD [\"./app\"]" > Dockerfile
 
+# Create .github/workflows directory
+mkdir -p .github/workflows
+
+# Create GitHub Actions workflow file
+echo "name: Build Docker Image
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
+
+    - name: Build Docker image
+      run: docker build -t $project_name_safe .
+
+    - name: Push Docker image to registry
+      run: docker push $project_name_safe" > .github/workflows/main.yml
+
 echo "Project created successfully in the '$project_name_safe' directory."
 
 # Instructions
@@ -50,4 +78,6 @@ To build and run the project using Docker:
 2. Run the Docker container:
    docker run $project_name_safe
 
-Note: If your project name contains spaces, replace them with hyphens in Docker commands."
+Note: If your project name contains spaces, replace them with hyphens in Docker commands.
+
+GitHub Actions workflow is set up to build the Docker image on every commit and once every 24 hours. Check the status on the 'Actions' tab in your GitHub repository."
