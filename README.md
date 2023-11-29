@@ -1,5 +1,5 @@
 # DockerGoTemplateScript
-A short, simple script to generate a new Go Docker project. Includes a Dockerfile, and a hello world Go file.
+A short, simple script to generate a new Go project with a Docker container built in.
 
 To quickly install copy and paste the following commands (without the `$`) into your terminal:
 
