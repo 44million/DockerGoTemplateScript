@@ -57,14 +57,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Docker
-      uses: docker/setup-docker@v2
-
-    - name: Build Docker image
-      run: docker build -t $project_name_safe .
-
-    - name: Push Docker image to registry
-      run: docker push $project_name_safe" > .github/workflows/main.yml
+    - name: Test Build Docker image
+      run: docker build -t cgp-github-test ." > .github/workflows/main.yml
 
 echo "Project created successfully in the '$project_name_safe' directory."
 
