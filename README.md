@@ -26,4 +26,4 @@ project-name/
     └── main.go
 ```
 
-Once generated, the project is ready to be put on GitHub, and is easily distributable thanks to Docker. See (this repository)[https://github.com/QRX53/cgp-github-test] for a live example.
+Once generated, the project is ready to be put on GitHub, and is easily distributable thanks to Docker. See [this repository](https://github.com/QRX53/cgp-github-test) for a live example.
