@@ -1,51 +1,53 @@
 #!/bin/bash
 
-# Get project name from the user
-read -p "Enter the project name: " projectName
+read -p "Enter the name of your Docker/Golang project: " project_name
 
-# Replace spaces with '-' and convert to lowercase
-projectNameSlug=$(echo "$projectName" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+# Replace spaces with hyphens and convert to lowercase
+project_name_safe=$(echo "$project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
 # Create project directory
-mkdir $projectNameSlug
-cd $projectNameSlug
+mkdir "$project_name_safe"
+cd "$project_name_safe"
 
-# Create Golang source file
-echo "package main
+# Create src folder
+mkdir src
 
-import \"fmt\"
+# Create a simple Go source file
+echo 'package main
+
+import "fmt"
 
 func main() {
-    fmt.Println(\"Hello, $projectName!\")
-}" > main.go
+    fmt.Println("Hello, Docker/Golang World!")
+}' > src/main.go
 
-# Create go.mod file
-echo "module $projectNameSlug
-
-go 1.16
-" > go.mod
+# Initialize go module
+go mod init "$project_name_safe"
 
 # Create Dockerfile
 echo "FROM golang:latest
 
-WORKDIR /app
+WORKDIR /go/src
 COPY . .
 
-RUN go build -o main .
+RUN go get -d -v ./...
+RUN go install -v ./...
 
-CMD [\"./main\"]" > Dockerfile
+# Explicitly build the executable
+RUN go build -o app ./src
 
-# Print instructions
-echo -e "\nProject '$projectName' created successfully!"
-echo -e "\nFollow these instructions to build and run the project using Docker:"
-echo -e "\n1. cd $projectNameSlug"
-echo -e "2. docker build -t $projectNameSlug ."
-echo -e "3. docker run $projectNameSlug"
+CMD [\"./app\"]" > Dockerfile
 
-# Additional distribution instructions
-echo -e "\nDistribution Instructions:"
-echo -e "To distribute the Docker image, push it to a container registry such as Docker Hub."
-echo -e "1. docker login (if not already logged in)"
-echo -e "2. docker tag $projectNameSlug:latest your-docker-username/$projectNameSlug:latest"
-echo -e "3. docker push your-docker-username/$projectNameSlug:latest"
+echo "Project created successfully in the '$project_name_safe' directory."
 
+# Instructions
+echo "
+To build and run the project using Docker:
+
+1. Build the Docker image:
+   docker build -t $project_name_safe .
+
+2. Run the Docker container:
+   docker run $project_name_safe
+
+Note: If your project name contains spaces, replace them with hyphens in Docker commands."
