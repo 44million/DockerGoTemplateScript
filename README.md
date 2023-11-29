@@ -17,10 +17,10 @@ The project will be generated with the name given during the creation process. I
 └── your-project-name/
     ├── Dockerfile
     ├── go.mod
-    ├── /.github/
-    │   └── /workflows/
+    ├── .github/
+    │   └── workflows/
     │       └── main.yml
-    └── /src/
+    └── src/
         └── main.go
 ```
 
