@@ -1,4 +1,4 @@
-# DockerGoTemplateScript
+# DGTS:
 A short, simple script to generate a new Go project with a Docker container, and a GitHub workflow built in.
 
 To quickly install copy and paste the following commands (without the `$`) into your terminal:
