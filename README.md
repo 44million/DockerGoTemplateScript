@@ -23,3 +23,5 @@ The project will be generated with the name given during the creation process. I
     └── /src/
         └── main.go
 ```
+
+Once generated, the project is ready to be put on GitHub, and is easily distributable thanks to Docker.
