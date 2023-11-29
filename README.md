@@ -4,11 +4,15 @@ A short, simple script to generate a new Go project with a Docker container, and
 To quickly install copy and paste the following commands (without the `$`) into your terminal:
 
 ```
-$ git clone https://github.com/QRX53/DockerGoTemplateScript/ 
+$ git clone https://github.com/QRX53/DockerGoTemplateScript/
+
 $ cd DockerGoTemplateScript
+
 $ chmod u+x CreateGoProject.sh
+
 $ mv CreateGoProject ~/
 # Or move the file to wherever you want to create the new project. This step is optional. The project will generate wherever the script is executed.
+
 $ ./CreateGoProject.sh
 ```
 
