@@ -7,6 +7,8 @@ To quickly install copy and paste the following commands (without the `$`) into 
 $ git clone https://github.com/QRX53/DockerGoTemplateScript/ 
 $ cd DockerGoTemplateScript
 $ chmod u+x CreateGoProject.sh
+$ mv CreateGoProject ~/
+# Or move the file to wherever you want to create the new project. This step is optional. The project will generate wherever the script is executed.
 $ ./CreateGoProject.sh
 ```
 
