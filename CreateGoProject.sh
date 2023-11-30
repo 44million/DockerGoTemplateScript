@@ -65,11 +65,11 @@ jobs:
     - name: Test Build Docker image
       run: docker build -t cgp-github-test ." > .github/workflows/main.yml
 
-echo "${BLUE}Project created successfully in the '$project_name_safe' directory.${NC}"
+echo "Project created successfully in the '$project_name_safe' directory."
 
 # Instructions
 echo "
-${BLUE}To build and run the project using Docker:
+To build and run the project using Docker:
 
 1. Build the Docker image:
    docker build -t $project_name_safe .
@@ -79,4 +79,4 @@ ${BLUE}To build and run the project using Docker:
 
 Note: If your project name contains spaces, replace them with hyphens in Docker commands.
 
-GitHub Actions workflow is set up to build the Docker image on every commit and once every 24 hours. Check the status on the 'Actions' tab in your GitHub repository.${NC}"
+GitHub Actions workflow is set up to build the Docker image on every commit and once every 24 hours. Check the status on the 'Actions' tab in your GitHub repository."
