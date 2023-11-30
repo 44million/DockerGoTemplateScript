@@ -5,6 +5,11 @@ read -p "Enter the name of your Docker/Golang project: " project_name
 # Replace spaces with hyphens and convert to lowercase
 project_name_safe=$(echo "$project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
+# Color variables
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
 # Create project directory
 mkdir "$project_name_safe"
 cd "$project_name_safe"
@@ -60,11 +65,11 @@ jobs:
     - name: Test Build Docker image
       run: docker build -t cgp-github-test ." > .github/workflows/main.yml
 
-echo "\e[1;34mProject created successfully in the '$project_name_safe' directory.\e[0m"
+echo "${BLUE}Project created successfully in the '$project_name_safe' directory.${NC}"
 
 # Instructions
-echo "\e[1;34m
-To build and run the project using Docker:
+echo "
+${BLUE}To build and run the project using Docker:
 
 1. Build the Docker image:
    docker build -t $project_name_safe .
@@ -74,4 +79,4 @@ To build and run the project using Docker:
 
 Note: If your project name contains spaces, replace them with hyphens in Docker commands.
 
-GitHub Actions workflow is set up to build the Docker image on every commit and once every 24 hours. Check the status on the 'Actions' tab in your GitHub repository.\e[0m"
+GitHub Actions workflow is set up to build the Docker image on every commit and once every 24 hours. Check the status on the 'Actions' tab in your GitHub repository.${NC}"
