@@ -5,11 +5,6 @@ read -p "Enter the name of your Docker/Golang project: " project_name
 # Replace spaces with hyphens and convert to lowercase
 project_name_safe=$(echo "$project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
-# Color variables
-RED='\033[0;31m'
-BLUE='\033[0;34m'
-NC='\033[0m'
-
 # Create project directory
 mkdir "$project_name_safe"
 cd "$project_name_safe"
